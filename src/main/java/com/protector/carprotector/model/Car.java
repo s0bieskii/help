@@ -20,14 +20,17 @@ public class Car {
     @Column(name="insuranceValid")
     private LocalDate insuranceValid;
     // private StateOfCar state;
-    @OneToOne(optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private Limitations limits;
 
-    @OneToOne(optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private Engine engineState;
 
-    @OneToOne(optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private Coordinates coordinates;
+
+    public Car() {
+    }
 
     public Long getId() {
         return id;

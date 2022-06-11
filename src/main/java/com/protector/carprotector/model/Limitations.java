@@ -1,10 +1,12 @@
 package com.protector.carprotector.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalTime;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Limitations {
@@ -14,7 +16,9 @@ public class Limitations {
 
     LocalTime startTimeOfUse;
     LocalTime endTimeOfUse;
+    @OneToOne(cascade = CascadeType.ALL)
     Coordinates allowedRangeMin;
+    @OneToOne(cascade = CascadeType.ALL)
     Coordinates allowedRangeMax;
     boolean allowedMotion;
 
@@ -24,6 +28,9 @@ public class Limitations {
         this.allowedRangeMin = allowedRangeMin;
         this.allowedRangeMax = allowedRangeMax;
         this.allowedMotion = allowedMotion;
+    }
+
+    public Limitations() {
     }
 
     public Long getId() {
